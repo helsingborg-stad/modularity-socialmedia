@@ -1,148 +1,60 @@
 <?php
 
-namespace ModularityTiles;
+namespace ModularitySocialMedia\Feed;
 
-class Feed
+class Feed extends \Modularity\Module
 {
-    public $grid = array();
+    public $slug = 'socialmedia';
+    public $supports = array();
 
-    public $tile = array();
+    public $feedArgs;
 
-    public $url;
-
-    public $title;
-
-    public $content;
-
-    public $image;
-
-
-    public function __construct($tile)
+    public function init()
     {
-        $this->setSize($tile['tile_size']);
+        $this->nameSingular = __("Social Media", 'modularity');
+        $this->namePlural = __("Sociala Media", 'modularity');
+        $this->description = __("Outputs a social media feed from desired username or hashtag (facebook, instagram, twitter, linkedin).", 'modularity');
+    }
 
-        if ($tile['link_type'] !== 'image') {
-            $this->setTitle($tile);
-            $this->setUrl($tile);
-            $this->setContent($tile);
-        } else {
-            $this->setImage($tile);
-        }
+    public function data() : array
+    {
+        $data['feed'] = $this->getFeed();
+        $data['feedArgs'] = $this->feedArgs;
+        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
+        return $data;
+    }
 
-        //Convert class arrays to string
-        $this->grid = implode(' ', $this->grid);
-        $this->tile = implode(' ', $this->tile);
+    public function getFeed()
+    {
+
+        $fields = json_decode(json_encode(get_fields($this->ID)));
+
+        $feedArgs = array(
+            'network'    => isset($fields->mod_social_type) ? $fields->mod_social_type : '',
+            'type'       => isset($fields->mod_social_data_type) ? $fields->mod_social_data_type : '',
+            'query'      => isset($fields->mod_social_query) ? $fields->mod_social_query : '',
+            'length'     => isset($fields->mod_social_length) ? $fields->mod_social_length : 10,
+            'max_height' => isset($fields->mod_social_max_height) ? $fields->mod_social_max_height : 300,
+            'row_length' => isset($fields->mod_social_row_length) ? $fields->mod_social_row_length : 3,
+            'api_user'   => isset($fields->mod_social_api_user) ? $fields->mod_social_api_user : '',
+            'api_secret' => isset($fields->mod_social_api_secret) ? $fields->mod_social_api_secret : '',
+            'page_link'  => isset($fields->mod_social_link) ? $fields->mod_social_link : false,
+            'link_url'   => isset($fields->mod_social_link_url) ? $fields->mod_social_link_url : '',
+            'link_text'  => isset($fields->mod_social_link_text) ? $fields->mod_social_link_text : ''
+        );
+
+        $this->feedArgs = $feedArgs;
+
+        return new \Modularity\Module\Social\Feed($feedArgs);
     }
 
     /**
-     * Get image that shouild been used and append class
-     * @return void
+     * Available "magic" methods for modules:
+     * init()            What to do on initialization
+     * data()            Use to send data to view (return array)
+     * style()           Enqueue style only when module is used on page
+     * script            Enqueue script only when module is used on page
+     * adminEnqueue()    Enqueue scripts for the module edit/add page in admin
+     * template()        Return the view template (blade) the module should use when displayed
      */
-
-    public function setImage($tile)
-    {
-        if ($tile['tile_size'] == 'horizontal') {
-            $this->image = $this->getResizedImageUrl($tile['custom_image'], array(854, 427));
-        } elseif ($tile['tile_size'] == 'vertical') {
-            $this->image = $this->getResizedImageUrl($tile['custom_image'], array(427, 854));
-        }
-
-        if (is_null($this->image)) {
-            $this->tile[] = 'tile-img';
-        }
-    }
-
-    /**
-     * Set content sizes
-     * @return void
-     * @param $tile A tile object
-     */
-
-    public function setContent($tile)
-    {
-        if ($tile['tile_size'] == 'horizontal' || $tile['tile_size'] == 'vertical') {
-            $this->content = $tile['lead'];
-            $this->tile[] = 'invert';
-            $this->grid['xs'] = 'grid-xs-12';
-        }
-    }
-
-    /**
-     * Set tile size according to settings provided
-     * @return void
-     * @param $tile A tile object
-     */
-
-    public function setSize($size)
-    {
-        $this->tile[] = 'tile';
-        if ($size == 'square') {
-            $this->grid['xs'] = 'grid-xs-6';
-            $this->grid['lg'] = 'grid-lg-4';
-        } elseif ($size == 'horizontal') {
-            $this->grid['xs'] = 'grid-xs-12';
-            $this->grid['lg'] = 'grid-lg-8';
-            $this->tile[] = 'tile-h';
-        } elseif ($size == 'vertical') {
-            $this->grid['xs'] = 'grid-xs-6';
-            $this->grid['lg'] = 'grid-lg-4';
-            $this->tile[] = 'tile-v';
-        }
-    }
-
-    /**
-     * Set url from textfield or linked item
-     * @return void
-     * @param $tile A tile object
-     */
-
-    public function setUrl($tile)
-    {
-        if ($tile['link_type'] == 'internal') {
-            $this->url = get_permalink($tile['page']->ID);
-        } else {
-            $this->url = $tile['link_url'];
-        }
-    }
-
-    /**
-     * Set the title of the tile, get title from link if not set.
-     * @return void
-     * @param $tile A tile object
-     */
-
-    public function setTitle($tile)
-    {
-        if ($tile['link_type'] == 'internal' && !$tile['title']) {
-            $this->title = $tile['page']->post_title;
-        } else {
-            $this->title = $tile['title'];
-        }
-    }
-
-    /**
-     * Resize image and return url of the resize
-     * @return string or null
-     * @param array $imageObject standard wordpress image data array (4 items)
-     * @param array $size array with width and height of the image that should be returned
-     */
-
-    public function getResizedImageUrl($imageObject, $size = array(100, 100))
-    {
-        if (!isset($imageObject['id'])) {
-            return null;
-        }
-
-        if (isset($imageObject['id']) && !is_numeric($imageObject['id'])) {
-            return null;
-        }
-
-        if ($image = wp_get_attachment_image_src($imageObject['id'], $size)) {
-            if (is_array($image) && count($image) == 4) {
-                return $image[0];
-            }
-        }
-
-        return null;
-    }
 }
