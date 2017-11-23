@@ -542,7 +542,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "mod-social"
+                "value": "mod-socialmedia"
             }
         ]
     ],

@@ -545,7 +545,7 @@ if (function_exists('acf_add_local_field_group')) {
             0 => array(
                 'param' => 'post_type',
                 'operator' => '==',
-                'value' => 'mod-social',
+                'value' => 'mod-socialmedia',
             ),
         ),
     ),

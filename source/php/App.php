@@ -16,7 +16,6 @@ class App
      */
     public function enqueueStyles()
     {
-
     }
 
     /**
@@ -25,6 +24,13 @@ class App
      */
     public function enqueueScripts()
     {
+    }
 
+    /**
+     * Depricate old module
+     * @return void
+     */
+    public function depricateModules()
+    {
     }
 }

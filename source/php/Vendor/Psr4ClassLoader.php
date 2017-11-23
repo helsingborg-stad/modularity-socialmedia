@@ -1,6 +1,6 @@
 <?php
 
-namespace ModularityTiles\Vendor;
+namespace ModularitySocialMedia\Vendor;
 
 /**
  * A PSR-4 compatible class loader.
