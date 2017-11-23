@@ -1,7 +1,7 @@
 {
-  "name": "modularity-tiles",
+  "name": "modularity-socialmedia",
   "version": "1.0.0",
-  "description": "(#plugin_description#)",
+  "description": "Plugin with a combined social media function for modulairity",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,21 +1,21 @@
 {
-    "name": "helsingborg-stad/modularity-tiles",
+    "name": "helsingborg-stad/modularity-socialmedia",
     "type": "wordpress-plugin",
     "license": "MIT",
     "authors": [
         {
-            "name": "Nikolas Ramstedt",
-            "email": "nikolas.ramstedt@helsingborg.se"
+            "name": "Sebastian Thulin",
+            "email": "sebastian.thulin@helsingborg.se"
         }
     ],
     "minimum-stability": "stable",
     "require": {
-        "helsingborg-stad/modularity-tiles": ">=0.0.1"
+        "helsingborg-stad/modularity-socialmedia": ">=0.0.1"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/helsingborg-stad/modularity-tiles.git"
+            "url": "https://github.com/helsingborg-stad/modularity-socialmedia.git"
         }
     ]
 }

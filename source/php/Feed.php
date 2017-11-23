@@ -2,7 +2,7 @@
 
 namespace ModularityTiles;
 
-class Tile
+class Feed
 {
     public $grid = array();
 

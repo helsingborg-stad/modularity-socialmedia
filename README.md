@@ -1,3 +1,3 @@
-# Modularity Tiles
+# Modularity Social Media Feed
 
-(#plugin_description#)
+Fetch and combine multiple social media sources as a sinlge feed on yourt website.
