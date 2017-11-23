@@ -1,3 +1,6 @@
+<div class="container">
+    <div class="grid">
+        <div class="grid-xs-12">
 <ul class="social social-feed-v2" data-packery='{ "itemSelector": ".social-item", "percentPosition": true, "transitionDuration": 0 }'>
  <li class="social-item">
      <div class="material">
@@ -8,7 +11,7 @@
          </div>
          <div class="social-user">
              <div class="user-image material-shadow-md">
-                 <img src="https://unsplash.it/75/75?image=469"/>
+                 <img src="https://unsplash.it/75/75?image=469" class="ratio-16-9"/>
              </div>
              <div class="social-post-details">
                  <a class="social-author" rel="author" href="#author">John Doe</a>
@@ -30,7 +33,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -57,7 +60,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -91,7 +94,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -125,7 +128,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -159,7 +162,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -193,7 +196,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -227,7 +230,7 @@
      <div class="material">
          <div class="social-image">
              <a href="#post" class="social-text">
-                 <img src="https://unsplash.it/300/200?image=468"/>
+                 <img src="https://unsplash.it/300/200?image=468" class="ratio-16-9"/>
              </a>
          </div>
          <div class="social-user">
@@ -258,3 +261,6 @@
      </div>
  </li>
 </ul>
+</div>
+</div>
+</div>
