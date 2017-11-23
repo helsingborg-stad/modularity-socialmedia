@@ -1,13 +1,13 @@
-<?php
+<?php 
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
-    'key' => 'group_56dedc26e5327',
-    'title' => __('Social feed', 'modularity'),
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
+    'key' => 'group_56dedc26e5388',
+    'title' => __('Social feed', 'modularity-testimonials'),
     'fields' => array(
         0 => array(
             'key' => 'field_56dedc3548ed9',
-            'label' => __('Feed type', 'modularity'),
+            'label' => __('Feed type', 'modularity-testimonials'),
             'name' => 'mod_social_type',
             'type' => 'radio',
             'instructions' => '',
@@ -20,11 +20,11 @@ if (function_exists('acf_add_local_field_group')) {
             ),
             'layout' => 'horizontal',
             'choices' => array(
-                'facebook' => __('Facebook', 'modularity'),
-                'instagram' => __('Instagram', 'modularity'),
-                'twitter' => __('Twitter', 'modularity'),
-                'pinterest' => __('Pinterest', 'modularity'),
-                'googleplus' => __('Google Plus', 'modularity'),
+                'facebook' => __('Facebook', 'modularity-testimonials'),
+                'instagram' => __('Instagram', 'modularity-testimonials'),
+                'twitter' => __('Twitter', 'modularity-testimonials'),
+                'pinterest' => __('Pinterest', 'modularity-testimonials'),
+                'googleplus' => __('Google Plus', 'modularity-testimonials'),
             ),
             'default_value' => '',
             'other_choice' => 0,
@@ -34,7 +34,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         1 => array(
             'key' => 'field_56dedd7948eda',
-            'label' => __('Facebook App ID', 'modularity'),
+            'label' => __('Facebook App ID', 'modularity-testimonials'),
             'name' => 'mod_social_api_user',
             'type' => 'text',
             'instructions' => '',
@@ -63,7 +63,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         2 => array(
             'key' => 'field_56dedda248edb',
-            'label' => __('Facebook App Secret', 'modularity'),
+            'label' => __('Facebook App Secret', 'modularity-testimonials'),
             'name' => 'mod_social_api_secret',
             'type' => 'text',
             'instructions' => '',
@@ -92,7 +92,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         3 => array(
             'key' => 'field_56deddb348edc',
-            'label' => __('Facebook username', 'modularity'),
+            'label' => __('Facebook username', 'modularity-testimonials'),
             'name' => 'mod_social_query',
             'type' => 'text',
             'instructions' => '',
@@ -121,7 +121,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         4 => array(
             'key' => 'field_56deddcd48edd',
-            'label' => __('Data type', 'modularity'),
+            'label' => __('Data type', 'modularity-testimonials'),
             'name' => 'mod_social_data_type',
             'type' => 'radio',
             'instructions' => '',
@@ -149,8 +149,8 @@ if (function_exists('acf_add_local_field_group')) {
             ),
             'layout' => 'horizontal',
             'choices' => array(
-                'hashtag' => __('Hashtag', 'modularity'),
-                'user' => __('User', 'modularity'),
+                'hashtag' => __('Hashtag', 'modularity-testimonials'),
+                'user' => __('User', 'modularity-testimonials'),
             ),
             'default_value' => 'hashtag',
             'other_choice' => 0,
@@ -160,7 +160,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         5 => array(
             'key' => 'field_56dede1448ede',
-            'label' => __('Instagram Client ID / Access Token', 'modularity'),
+            'label' => __('Instagram Client ID / Access Token', 'modularity-testimonials'),
             'name' => 'mod_social_api_user',
             'type' => 'text',
             'instructions' => '',
@@ -186,7 +186,7 @@ if (function_exists('acf_add_local_field_group')) {
             ),
             'default_value' => '1406045013.3a81a9f.7c505432dfd3455ba8e16af5a892b4f7',
             'maxlength' => '',
-            'placeholder' => __(__(__(__(__(__(__(__('1406045013.3a81a9f.7c505432dfd3455ba8e16af5a892b4f7', 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'),
+            'placeholder' => __('1406045013.3a81a9f.7c505432dfd3455ba8e16af5a892b4f7', 'modularity-testimonials'),
             'prepend' => '',
             'append' => '',
             'readonly' => 0,
@@ -194,7 +194,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         6 => array(
             'key' => 'field_56dee0e1ed7ab',
-            'label' => __('Twitter Consumer Key', 'modularity'),
+            'label' => __('Twitter Consumer Key', 'modularity-testimonials'),
             'name' => 'mod_social_api_user',
             'type' => 'text',
             'instructions' => '',
@@ -223,7 +223,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         7 => array(
             'key' => 'field_56dee104ed7ac',
-            'label' => __('Twitter Consumer Secret', 'modularity'),
+            'label' => __('Twitter Consumer Secret', 'modularity-testimonials'),
             'name' => 'mod_social_api_secret',
             'type' => 'text',
             'instructions' => '',
@@ -252,7 +252,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         8 => array(
             'key' => 'field_57629445bddd5',
-            'label' => __('Google+ Api Key', 'modularity'),
+            'label' => __('Google+ Api Key', 'modularity-testimonials'),
             'name' => 'mod_social_api_user',
             'type' => 'text',
             'instructions' => '',
@@ -281,7 +281,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         9 => array(
             'key' => 'field_56dede6048ee0',
-            'label' => __('Username', 'modularity'),
+            'label' => __('Username', 'modularity-testimonials'),
             'name' => 'mod_social_query',
             'type' => 'text',
             'instructions' => '',
@@ -334,14 +334,14 @@ if (function_exists('acf_add_local_field_group')) {
             'default_value' => '',
             'maxlength' => '',
             'placeholder' => '',
-            'prepend' => __(__(__(__(__(__(__(__('@', 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'),
+            'prepend' => __('@', 'modularity-testimonials'),
             'append' => '',
             'readonly' => 0,
             'disabled' => 0,
         ),
         10 => array(
             'key' => 'field_56dedeaa48ee2',
-            'label' => __('Hashtag', 'modularity'),
+            'label' => __('Hashtag', 'modularity-testimonials'),
             'name' => 'mod_social_query',
             'type' => 'text',
             'instructions' => '',
@@ -380,14 +380,14 @@ if (function_exists('acf_add_local_field_group')) {
             'default_value' => '',
             'maxlength' => '',
             'placeholder' => '',
-            'prepend' => __(__(__(__(__(__(__(__('#', 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'),
+            'prepend' => __('#', 'modularity-testimonials'),
             'append' => '',
             'readonly' => 0,
             'disabled' => 0,
         ),
         11 => array(
             'key' => 'field_56dfe51e498cb',
-            'label' => __('Max items', 'modularity'),
+            'label' => __('Max items', 'modularity-testimonials'),
             'name' => 'mod_social_length',
             'type' => 'number',
             'instructions' => '',
@@ -410,7 +410,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         12 => array(
             'key' => 'field_56e01f2577390',
-            'label' => __('Max height', 'modularity'),
+            'label' => __('Max height', 'modularity-testimonials'),
             'name' => 'mod_social_max_height',
             'type' => 'number',
             'instructions' => '',
@@ -427,13 +427,13 @@ if (function_exists('acf_add_local_field_group')) {
             'step' => '',
             'placeholder' => '',
             'prepend' => '',
-            'append' => __(__(__(__(__(__(__(__('pixels', 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'), 'modularity'),
+            'append' => __('pixels', 'modularity-testimonials'),
             'readonly' => 0,
             'disabled' => 0,
         ),
         13 => array(
             'key' => 'field_56e038fa40a78',
-            'label' => __('Images per row', 'modularity'),
+            'label' => __('Images per row', 'modularity-testimonials'),
             'name' => 'mod_social_row_length',
             'type' => 'number',
             'instructions' => '',
@@ -471,7 +471,7 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         14 => array(
             'key' => 'field_59afbaef4019a',
-            'label' => __('Link to page', 'modularity'),
+            'label' => __('Link to page', 'modularity-testimonials'),
             'name' => 'mod_social_link',
             'type' => 'true_false',
             'instructions' => '',
@@ -482,7 +482,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'class' => '',
                 'id' => '',
             ),
-            'message' => __('Check this box if you want to display a button that links to the social media page.', 'modularity'),
+            'message' => __('Check this box if you want to display a button that links to the social media page.', 'modularity-testimonials'),
             'default_value' => 0,
             'ui' => 0,
             'ui_on_text' => '',
@@ -490,10 +490,10 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         15 => array(
             'key' => 'field_59afbc492866a',
-            'label' => __('URL', 'modularity'),
+            'label' => __('URL', 'modularity-testimonials'),
             'name' => 'mod_social_link_url',
             'type' => 'url',
-            'instructions' => __('Enter URL to the social media feed or page.', 'modularity'),
+            'instructions' => __('Enter URL to the social media feed or page.', 'modularity-testimonials'),
             'required' => 1,
             'conditional_logic' => array(
                 0 => array(
@@ -514,10 +514,10 @@ if (function_exists('acf_add_local_field_group')) {
         ),
         16 => array(
             'key' => 'field_59afbbaa061a7',
-            'label' => __('Button text', 'modularity'),
+            'label' => __('Button text', 'modularity-testimonials'),
             'name' => 'mod_social_link_text',
             'type' => 'text',
-            'instructions' => __('Enter button text.', 'modularity'),
+            'instructions' => __('Enter button text.', 'modularity-testimonials'),
             'required' => 1,
             'conditional_logic' => array(
                 0 => array(
@@ -558,4 +558,4 @@ if (function_exists('acf_add_local_field_group')) {
     'active' => 1,
     'description' => '',
 ));
-}
+}

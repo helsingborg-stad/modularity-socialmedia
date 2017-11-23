@@ -44,7 +44,7 @@ add_action('plugins_loaded', function () {
     $acfExportManager->setTextdomain('modularity-testimonials');
     $acfExportManager->setExportFolder(MODULARITYSOCIALMEDIA_PATH . 'source/php/acf-fields/');
     $acfExportManager->autoExport(array(
-        'mod-socialmedia' => 'group_56dedc26e5327',
+        'mod-socialmedia' => 'group_56dedc26e5388',
     ));
     $acfExportManager->import();
 });
