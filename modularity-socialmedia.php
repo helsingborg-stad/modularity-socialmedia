@@ -21,7 +21,7 @@ if (! defined('WPINC')) {
 define('MODULARITYSOCIALMEDIA_PATH', plugin_dir_path(__FILE__));
 define('MODULARITYSOCIALMEDIA_URL', plugins_url('', __FILE__));
 define('MODULARITYSOCIALMEDIA_TEMPLATE_PATH', MODULARITYSOCIALMEDIA_PATH . 'templates/');
-define('MODULARITYSOCIALMEDIA_MODULE_PATH', MODULARITYSOCIALMEDIA_PATH . 'source/php/Module');
+define('MODULARITYSOCIALMEDIA_MODULE_PATH', MODULARITYSOCIALMEDIA_PATH . 'source/php/');
 
 
 load_plugin_textdomain('modularity-socialmedia', false, plugin_basename(dirname(__FILE__)) . '/languages');
@@ -34,9 +34,6 @@ $loader = new ModularitySocialMedia\Vendor\Psr4ClassLoader();
 $loader->addPrefix('ModularitySocialMedia', MODULARITYSOCIALMEDIA_PATH);
 $loader->addPrefix('ModularitySocialMedia', MODULARITYSOCIALMEDIA_PATH . 'source/php/');
 $loader->register();
-
-// Start application
-new ModularitySocialMedia\App();
 
 // Acf auto import and export
 add_action('plugins_loaded', function () {
@@ -55,8 +52,8 @@ add_action('plugins_loaded', function () {
 add_action('plugins_loaded', function () {
     if (function_exists('modularity_register_module')) {
         modularity_register_module(
-            MODULARITYSOCIALMEDIA_MODULE_PATH ."/Feed/",
-            'Feed'
+            MODULARITYSOCIALMEDIA_MODULE_PATH,
+            'App'
         );
     }
 });

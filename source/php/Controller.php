@@ -1,14 +1,28 @@
 <?php
 
-namespace ModularitySocialMedia\Feed;
+namespace ModularitySocialMedia;
 
-class FeedController
+class Controller
 {
     public $args = array();
 
     protected $feedData = array();
     protected $markup = '';
 
+    public $curl;
+
+    public function __construct()
+    {
+        $this->curl = new \Modularity\Helper\Curl();
+    }
+
+    public function registerError($errorMessage)
+    {
+        error_log($errorMessage);
+    }
+
+
+/*
     public function __construct($args = array())
     {
 
@@ -28,11 +42,10 @@ class FeedController
 
 
 
+
+
         $this->args = array_merge($defaultArgs, $args);
 
-        /**
-         * Get feed depending on args
-         */
         switch ($this->args['network']) {
             case 'instagram':
                 $this->feedData = $this->getInstagramHashtagNoToken();
@@ -59,6 +72,8 @@ class FeedController
                 break;
         }
     }
+
+    */
 
     public function getGooglePlusFeed()
     {

@@ -2,35 +2,106 @@
 
 namespace ModularitySocialMedia;
 
-class App
+class App extends \Modularity\Module
 {
-    public function __construct()
+    public $slug = 'socialmedia';
+    public $supports = array();
+
+    public $feedArgs;
+
+
+    public function init()
     {
-        add_action('admin_enqueue_scripts', array($this, 'enqueueStyles'));
-        add_action('admin_enqueue_scripts', array($this, 'enqueueScripts'));
+        $this->nameSingular = __("Social Media", 'modularity');
+        $this->namePlural = __("Sociala Media", 'modularity');
+        $this->description = __("Outputs a social media feed from desired usernames or hashtags (facebook, instagram, twitter, linkedin). The feed can combine multiple sources in a single feed.", 'modularity');
+    }
+
+    public function data() : array
+    {
+
+        $avabile_feeds = get_field('social_media_feeds', $this->ID);
+        $result = array();
+
+
+        if (!empty($avabile_feeds) && is_array($avabile_feeds)) {
+
+
+            foreach ($avabile_feeds as $feed) {
+
+                switch ($feed['acf_fc_layout']) {
+                    case 'facebook':
+
+                            //$facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
+                            //$result[] = $facebook->getUser($feed['mod_socialmedia_fb_username']);
+
+                        break;
+
+                    case 'instagram':
+
+                        if ($feed['mod_socialmedia_in_type'] == "user") {
+                            $instagram = new Network\Instagram();
+                            $result = $result + $instagram->getUser($feed['mod_socialmedia_in_username']);
+                        }
+
+                        if ($feed['mod_socialmedia_in_type'] == "hashtag") {
+                            $instagram = new Network\Instagram();
+                            $result = $result + $instagram->getHashtag($feed['mod_socialmedia_in_hashtag']);
+                        }
+
+                        break;
+                }
+
+            }
+
+        }
+
+        $data['feed'] = $result;
+
+
+        var_dump($result);
+
+        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
+
+        return $data;
+    }
+
+    public function getFeed()
+    {
+
+        $fields = json_decode(json_encode(get_fields($this->ID)));
+
+        $feedArgs = array(
+            'network'    => isset($fields->mod_social_type) ? $fields->mod_social_type : '',
+            'type'       => isset($fields->mod_social_data_type) ? $fields->mod_social_data_type : '',
+            'query'      => isset($fields->mod_social_query) ? $fields->mod_social_query : '',
+            'length'     => isset($fields->mod_social_length) ? $fields->mod_social_length : 10,
+            'max_height' => isset($fields->mod_social_max_height) ? $fields->mod_social_max_height : 300,
+            'row_length' => isset($fields->mod_social_row_length) ? $fields->mod_social_row_length : 3,
+            'api_user'   => isset($fields->mod_social_api_user) ? $fields->mod_social_api_user : '',
+            'api_secret' => isset($fields->mod_social_api_secret) ? $fields->mod_social_api_secret : '',
+            'page_link'  => isset($fields->mod_social_link) ? $fields->mod_social_link : false,
+            'link_url'   => isset($fields->mod_social_link_url) ? $fields->mod_social_link_url : '',
+            'link_text'  => isset($fields->mod_social_link_text) ? $fields->mod_social_link_text : ''
+        );
+
+        $this->feedArgs = $feedArgs;
+
+        return new \Modularity\Module\Social\Feed($feedArgs);
+    }
+
+    public function template() : string
+    {
+        return "feed.blade.php";
     }
 
     /**
-     * Enqueue required style
-     * @return void
+     * Available "magic" methods for modules:
+     * init()            What to do on initialization
+     * data()            Use to send data to view (return array)
+     * style()           Enqueue style only when module is used on page
+     * script            Enqueue script only when module is used on page
+     * adminEnqueue()    Enqueue scripts for the module edit/add page in admin
+     * template()        Return the view template (blade) the module should use when displayed
      */
-    public function enqueueStyles()
-    {
-    }
-
-    /**
-     * Enqueue required scripts
-     * @return void
-     */
-    public function enqueueScripts()
-    {
-    }
-
-    /**
-     * Depricate old module
-     * @return void
-     */
-    public function depricateModules()
-    {
-    }
 }
