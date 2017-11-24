@@ -56,7 +56,7 @@ class App extends \Modularity\Module
         $data['feed'] = $this->removeDuplicates($result);
 
         //Only get n first items
-        $data['feed'] = array_slice($data, 0, get_field('mod_social_items', $this->ID));
+        $data['feed'] = array_slice($data['feed'], 0, get_field('mod_social_items', $this->ID));
 
         //Sort by publish date
         usort($data['feed'], function ($a, $b) {
