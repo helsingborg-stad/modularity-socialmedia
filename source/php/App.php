@@ -60,9 +60,9 @@ class App extends \Modularity\Module
 
         //Add translation strings
         $data['translations'] = array(
-            'likes' => __("likes"),
-            'posted' => __("posted on"),
-            'ago' => __("ago")
+            'likes' => __("likes", 'modularity-socialmedia'),
+            'posted' => __("posted on", 'modularity-socialmedia'),
+            'ago' => __("ago", 'modularity-socialmedia')
         );
 
         //Add classes
