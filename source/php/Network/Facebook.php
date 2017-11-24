@@ -50,7 +50,39 @@ class Facebook extends \ModularitySocialMedia\Controller
 
     public function formatResponse($response, $type = 'user')
     {
-        return $response;
+
+        $result = array();
+
+        if (!empty($response) && is_array($response)) {
+
+            foreach ($response as $item) {
+
+                $result[] = array(
+                    'id' => $item->object_id,
+                    'user_name' => $item->from->name,
+                    'profile_pic' => null,
+                    'timestamp' => strtotime($item->created_time),
+                    'timestamp_readable' => $this->readableTimeStamp(strtotime($item->created_time)),
+                    'content' => wp_trim_words($item->message, 40, "..."),
+
+                    'image_large' => $item->full_picture,
+                    'image_small' => $item->picture,
+
+                    'number_of_likes' => count($item->likes->data),
+                    'network_source' => $item->link,
+                    'network_name' => 'facebook',
+
+                    'link' => "",
+                    'link_title' => "",
+                    'link_content' => "",
+                    'link_og_image' => "",
+                );
+
+            }
+
+        }
+
+        return $result;
     }
 
     /**
@@ -90,7 +122,7 @@ class Facebook extends \ModularitySocialMedia\Controller
 
         //Parse
         if (isset(json_decode($feed)->data) && !empty(json_decode($feed)->data)) {
-            return $this->formatResponse(json_decode($feed)->data);
+            return $this->formatResponse(json_decode($feed)->data, 'user');
         }
 
         //Error return

@@ -21,59 +21,10 @@ class Controller
         error_log($errorMessage);
     }
 
-
-/*
-    public function __construct($args = array())
+    public function readableTimeStamp($unixtime)
     {
-
-        $defaultArgs = array(
-            'network'    => 'instagram',
-            'type'       => 'hashtagNoToken',
-            'query'      => 'sweden',
-            'length'     => 10,
-            'max_height' => 300,
-            'row_length' => false,
-            'api_user'   => '',
-            'api_secret' => '',
-            'page_link'  => false,
-            'link_url'   => '',
-            'link_text'  => ''
-        );
-
-
-
-
-
-        $this->args = array_merge($defaultArgs, $args);
-
-        switch ($this->args['network']) {
-            case 'instagram':
-                $this->feedData = $this->getInstagramHashtagNoToken();
-                break;
-
-            case 'facebook':
-                $this->feedData = $this->getFacebookUser();
-                break;
-
-            case 'twitter':
-                if ($this->args['type'] == 'hashtag') {
-                    $this->feedData = $this->getTwitterHashtag();
-                } else {
-                    $this->feedData = $this->getTwitterUser();
-                }
-                break;
-
-            case 'pinterest':
-                $this->feedData = $this->getPinterestUser();
-                break;
-
-            case 'googleplus':
-                $this->feedData = $this->getGooglePlusFeed();
-                break;
-        }
+        return human_time_diff($unixtime, current_time('timestamp'));
     }
-
-    */
 
     public function getGooglePlusFeed()
     {

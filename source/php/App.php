@@ -19,21 +19,17 @@ class App extends \Modularity\Module
 
     public function data() : array
     {
-
         $avabile_feeds = get_field('social_media_feeds', $this->ID);
+
         $result = array();
 
-
         if (!empty($avabile_feeds) && is_array($avabile_feeds)) {
-
-
             foreach ($avabile_feeds as $feed) {
-
                 switch ($feed['acf_fc_layout']) {
                     case 'facebook':
 
-                            //$facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
-                            //$result[] = $facebook->getUser($feed['mod_socialmedia_fb_username']);
+                            $facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
+                            $result = $result + $facebook->getUser($feed['mod_socialmedia_fb_username']);
 
                         break;
 
@@ -51,43 +47,45 @@ class App extends \Modularity\Module
 
                         break;
                 }
-
             }
-
         }
 
-        $data['feed'] = $result;
+        //Remove duplicate posts
+        $data['feed'] = $this->removeDuplicates($result);
 
+        //Sort by publish date
+        usort($data['feed'], function ($a, $b) {
+            return (int) $b['timestamp'] - (int) $a['timestamp'];
+        });
 
-        var_dump($result);
+        //Add translation strings
+        $data['translations'] = array(
+            'likes' => __("likes"),
+            'posted' => __("posted on"),
+            'ago' => __("ago")
+        );
 
-        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array('box', 'box-panel'), $this->post_type, $this->args));
+        //Add classes
+        $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array(), $this->post_type, $this->args));
 
         return $data;
     }
 
-    public function getFeed()
+    public function removeDuplicates($feed)
     {
+        $sanitized= array();
 
-        $fields = json_decode(json_encode(get_fields($this->ID)));
+        if (is_array($feed) && !empty($feed)) {
+            foreach ($feed as $item) {
+                if (!array_key_exists($item['id'], $sanitized)) {
+                    $sanitized[$item['id']] = $item;
+                }
+            }
 
-        $feedArgs = array(
-            'network'    => isset($fields->mod_social_type) ? $fields->mod_social_type : '',
-            'type'       => isset($fields->mod_social_data_type) ? $fields->mod_social_data_type : '',
-            'query'      => isset($fields->mod_social_query) ? $fields->mod_social_query : '',
-            'length'     => isset($fields->mod_social_length) ? $fields->mod_social_length : 10,
-            'max_height' => isset($fields->mod_social_max_height) ? $fields->mod_social_max_height : 300,
-            'row_length' => isset($fields->mod_social_row_length) ? $fields->mod_social_row_length : 3,
-            'api_user'   => isset($fields->mod_social_api_user) ? $fields->mod_social_api_user : '',
-            'api_secret' => isset($fields->mod_social_api_secret) ? $fields->mod_social_api_secret : '',
-            'page_link'  => isset($fields->mod_social_link) ? $fields->mod_social_link : false,
-            'link_url'   => isset($fields->mod_social_link_url) ? $fields->mod_social_link_url : '',
-            'link_text'  => isset($fields->mod_social_link_text) ? $fields->mod_social_link_text : ''
-        );
+            return $sanitized;
+        }
 
-        $this->feedArgs = $feedArgs;
-
-        return new \Modularity\Module\Social\Feed($feedArgs);
+        return $feed;
     }
 
     public function template() : string
