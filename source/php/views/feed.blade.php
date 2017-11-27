@@ -43,5 +43,9 @@
 
     </ul>
 
+    @if($link && $linkTarget && $linkLabel)
+        <a href="{{ $linkTarget }}" class="btn btn-block btn-outline btn-primary btn-lg">{{ $linkLabel }}</a>
+    @endif
+
 @endif
 
