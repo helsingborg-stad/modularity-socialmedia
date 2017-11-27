@@ -82,6 +82,9 @@ class App extends \Modularity\Module
         //Add classes
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array(), $this->post_type, $this->args));
 
+        //Generate a section id
+        $data['sectionID'] = sanitize_title($this->module->post_title);
+
         return $data;
     }
 
