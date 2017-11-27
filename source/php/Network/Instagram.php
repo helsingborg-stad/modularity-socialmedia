@@ -169,7 +169,7 @@ class Instagram extends \ModularitySocialMedia\Controller
 
         //Parse
         if ($data = json_decode($data)) {
-            return $this->profileCache[$data->username] = array(
+            return $this->profileCache[$username] = array(
                 'username' => $data->user->username,
                 'profilepic' => $data->user->profile_pic_url,
             );
