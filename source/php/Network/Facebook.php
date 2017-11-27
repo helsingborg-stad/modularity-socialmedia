@@ -60,13 +60,17 @@ class Facebook extends \ModularitySocialMedia\Controller
 
             foreach ($response as $item) {
 
+                if (!isset($item->object_id)) {
+                    continue;
+                }
+
                 $result[] = array(
                     'id' => $item->object_id,
-                    'user_name' => $item->from->name,
+                    'user_name' => isset($item->from->name) ? $item->from->name : '',
                     'profile_pic' => null,
                     'timestamp' => strtotime($item->created_time),
                     'timestamp_readable' => $this->readableTimeStamp(strtotime($item->created_time)),
-                    'content' => wp_trim_words($item->message, 40, "..."),
+                    'content' => isset($item->message) ? wp_trim_words($item->message, 40, "...") : null,
 
                     'image_large' => (isset($item->full_picture) && !empty($item->full_picture) ? $item->full_picture : null),
                     'image_small' => (isset($item->picture) && !empty($item->picture) ? $item->picture : null),
