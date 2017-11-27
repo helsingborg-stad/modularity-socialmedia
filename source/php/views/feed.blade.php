@@ -5,9 +5,11 @@
 
             <li class="social-item {{$columns}}">
                 <div class="material">
+                    @if(!is_null($item['image_large']))
                     <div class="social-image">
                         <a href="{{ $item['network_source'] }}" class="ratio-16-9" style="display: block; background-size: cover; background-image: url('{{ $item['image_large'] }}'); background-position: center;"></a>
                     </div>
+                    @endif
                     <div class="social-user">
 
                         @if(!empty($item['profile_pic']))
@@ -44,7 +46,7 @@
     </ul>
 
     @if($link && $linkTarget && $linkLabel)
-        <a href="{{ $linkTarget }}" class="btn btn-block btn-outline btn-primary btn-lg">{{ $linkLabel }}</a>
+        <a href="{{ $linkTarget }}" class="btn btn-block btn-outline btn-primary btn-md">{{ $linkLabel }}</a>
     @endif
 
 @endif

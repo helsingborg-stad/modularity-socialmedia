@@ -68,8 +68,8 @@ class Facebook extends \ModularitySocialMedia\Controller
                     'timestamp_readable' => $this->readableTimeStamp(strtotime($item->created_time)),
                     'content' => wp_trim_words($item->message, 40, "..."),
 
-                    'image_large' => $item->full_picture,
-                    'image_small' => $item->picture,
+                    'image_large' => (isset($item->full_picture) && !empty($item->full_picture) ? $item->full_picture : null),
+                    'image_small' => (isset($item->picture) && !empty($item->picture) ? $item->picture : null),
 
                     'number_of_likes' => count($item->likes->data),
                     'network_source' => $item->link,
