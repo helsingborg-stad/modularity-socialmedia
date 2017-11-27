@@ -217,7 +217,7 @@
                 1 => __('One column', 'modularity-testimonials'),
                 2 => __('Two columns', 'modularity-testimonials'),
                 3 => __('Three columns', 'modularity-testimonials'),
-                '4: Four columns' => __('4: Four columns', 'modularity-testimonials'),
+                4 => __('Four columns', 'modularity-testimonials'),
             ),
             'default_value' => array(
                 0 => 3,

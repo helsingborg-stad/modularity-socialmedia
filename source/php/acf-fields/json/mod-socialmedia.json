@@ -214,7 +214,7 @@
                 "1": "One column",
                 "2": "Two columns",
                 "3": "Three columns",
-                "4: Four columns": "4: Four columns"
+                "4": "Four columns"
             },
             "default_value": [
                 3

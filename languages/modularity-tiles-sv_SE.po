@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Modularity Social Media Feed\n"
+"POT-Creation-Date: 2017-11-27 15:10+0100\n"
+"PO-Revision-Date: 2017-11-27 15:10+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: modularity-socialmedia.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: source/php/App.php:15
+msgid "Social Media"
+msgstr "Sociala medier"
+
+#: source/php/App.php:16
+msgid "Sociala Media"
+msgstr "Sociala medier"
+
+#: source/php/App.php:17
+msgid ""
+"Outputs a social media feed from desired usernames or hashtags (facebook, "
+"instagram, twitter, linkedin). The feed can combine multiple sources in a "
+"single feed."
+msgstr ""
+"Skriver ut ett flöde med de senaste från facebook och instagram. Funktionen "
+"kan kombinera olika typer av flöden. "
+
+#: source/php/App.php:69
+msgid "likes"
+msgstr "likes"
+
+#: source/php/App.php:70
+msgid "posted on"
+msgstr "postat på"
+
+#: source/php/App.php:71
+msgid "ago"
+msgstr "sedan"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:6
+msgid "Social feed"
+msgstr "Socialt medieflöde"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:10
+msgid "Social media feeds"
+msgstr "Sociala medieflöden"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:25
+msgid "Facebook"
+msgstr ""
+
+#: source/php/acf-fields/php/mod-socialmedia.php:92
+msgid "Instagram"
+msgstr ""
+
+#: source/php/acf-fields/php/mod-socialmedia.php:178
+msgid "Add new feed source"
+msgstr "Lägg till ny källa"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:184
+msgid "Max items"
+msgstr "Maximalt antal inlägg"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:205
+msgid "Numer of columns"
+msgstr "Antal kolumner"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:217
+msgid "One column"
+msgstr "En kolumn"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:218
+msgid "Two columns"
+msgstr "Två kolumner"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:219
+msgid "Three columns"
+msgstr "Tre kolumner"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:220
+msgid "Four columns"
+msgstr "Fyra kolumner"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:234
+msgid "Add link"
+msgstr "Lägg till länk"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:245
+msgid ""
+"Check this box if you want to display a button that links to the social "
+"media page."
+msgstr ""
+"Klicka i den här rutan för att visa en knapp som länkar till valfritt ställe "
+"nedanför flödet"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:253
+msgid "Web adress"
+msgstr "Webbadress"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:256
+msgid "Enter URL to a social media feed or page."
+msgstr "Ange en webbadress"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:277
+msgid "Button text"
+msgstr "Knappens text"
+
+#: source/php/acf-fields/php/mod-socialmedia.php:280
+msgid "Enter button text."
+msgstr "Ange en knapptext"
+
+#. Plugin Name of the plugin/theme
+msgid "Modularity Social Media Feed"
+msgstr "Modularity socialt medieflöde (Modularity Social Media Feed)"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/helsingborg-stad/modularity-socialmedia"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Get and display a combined feed from multiple social media sources"
+msgstr "Hämta och visa ett kombinerat flöde från sociala medier"
+
+#. Author of the plugin/theme
+msgid "Sebastian Thulin"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/helsingborg-stad"
+msgstr ""
