@@ -3,10 +3,10 @@
 
         @foreach($feed as $item)
 
-            <li class="social-item">
+            <li class="social-item {{$columns}}">
                 <div class="material">
                     <div class="social-image">
-                        <a href="{{ $item['network_source'] }}" class="ratio-16-9" style="display: block; background-size: cover; background-image: url('{{ $item['image_large'] }}');"></a>
+                        <a href="{{ $item['network_source'] }}" class="ratio-16-9" style="display: block; background-size: cover; background-image: url('{{ $item['image_large'] }}'); background-position: center;"></a>
                     </div>
                     <div class="social-user">
 

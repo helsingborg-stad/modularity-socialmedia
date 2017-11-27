@@ -71,10 +71,34 @@ class App extends \Modularity\Module
             'ago' => __("ago", 'modularity-socialmedia')
         );
 
+        //Number of columns
+        $data['columns'] = $this->getNumberOfColumnsClass();
+
         //Add classes
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array(), $this->post_type, $this->args));
 
         return $data;
+    }
+
+    /**
+     * Get a class for item with by column count
+     * @return string a class indicating how many columns that should be shown
+     */
+
+    public function getNumberOfColumnsClass()
+    {
+        $numberOfColumns = get_field('mod_social_columns', $this->ID);
+
+        //Retain to allowed values
+        if (!in_array($numberOfColumns, array(1, 2, 3, 4))) {
+            $numberOfColumns = 3;
+        }
+
+        //Calculate number of colums
+        if (is_numeric($numberOfColumns)) {
+            return "grid-xs-12 grid-sm-" . (12 / $numberOfColumns);
+        }
+        return 'grid-xs-12 grid-sm-4';
     }
 
     /**
@@ -86,7 +110,7 @@ class App extends \Modularity\Module
     public function truncateFeed($feed)
     {
         $limit = is_numeric(get_field('mod_social_items', $this->ID)) ? get_field('mod_social_items', $this->ID) : 10;
-        return array_slice($data['feed'], 0, $limit);
+        return array_slice($feed, 0, $limit);
     }
 
     /**
