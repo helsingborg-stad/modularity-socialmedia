@@ -74,6 +74,11 @@ class App extends \Modularity\Module
         //Number of columns
         $data['columns'] = $this->getNumberOfColumnsClass();
 
+        //Button stuff
+        $data['link'] = get_field('mod_social_link', $this->ID);
+        $data['linkTarget'] = get_field('mod_social_link_url', $this->ID);
+        $data['linkLabel'] = get_field('mod_social_link_text', $this->ID);
+
         //Add classes
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array(), $this->post_type, $this->args));
 
