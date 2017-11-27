@@ -26,7 +26,7 @@ class App extends \Modularity\Module
     {
         $avabile_feeds = get_field('social_media_feeds', $this->ID);
 
-        $result = array();
+        $data['feed'] = array();
 
         if (!empty($avabile_feeds) && is_array($avabile_feeds)) {
             foreach ($avabile_feeds as $feed) {
@@ -34,7 +34,7 @@ class App extends \Modularity\Module
                     case 'facebook':
 
                             $facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
-                            $result = $result + $facebook->getUser($feed['mod_socialmedia_fb_username']);
+                            $data['feed'] = $data['feed'] + $facebook->getUser($feed['mod_socialmedia_fb_username']);
 
                         break;
 
@@ -42,12 +42,12 @@ class App extends \Modularity\Module
 
                         if ($feed['mod_socialmedia_in_type'] == "user") {
                             $instagram = new Network\Instagram();
-                            $result = $result + $instagram->getUser($feed['mod_socialmedia_in_username']);
+                            $data['feed'] = $data['feed'] + $instagram->getUser($feed['mod_socialmedia_in_username']);
                         }
 
                         if ($feed['mod_socialmedia_in_type'] == "hashtag") {
                             $instagram = new Network\Instagram();
-                            $result = $result + $instagram->getHashtag($feed['mod_socialmedia_in_hashtag']);
+                            $data['feed'] = $data['feed'] + $instagram->getHashtag($feed['mod_socialmedia_in_hashtag']);
                         }
 
                         break;
@@ -56,7 +56,7 @@ class App extends \Modularity\Module
         }
 
         //Remove duplicate posts
-        $data['feed'] = $this->removeDuplicates($result);
+        $data['feed'] = $this->removeDuplicates($data['feed']);
 
         //Sort by publish date
         $data['feed'] = $this->sortByTimestamp($data['feed']);
