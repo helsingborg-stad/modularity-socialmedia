@@ -1,4 +1,3 @@
-
 @if(is_array($feed) && !empty($feed))
     <ul class="social social-feed-v2" data-packery='{ "itemSelector": ".social-item", "percentPosition": true, "transitionDuration": 0 }'>
 
