@@ -83,7 +83,7 @@ class App extends \Modularity\Module
         $data['classes'] = implode(' ', apply_filters('Modularity/Module/Classes', array(), $this->post_type, $this->args));
 
         //Generate a section id
-        $data['sectionID'] = sanitize_title($this->module->post_title);
+        $data['sectionID'] = sanitize_title($this->post_title);
 
         return $data;
     }
