@@ -5,7 +5,7 @@ namespace ModularitySocialMedia\Network;
 class Instagram extends \ModularitySocialMedia\Controller
 {
 
-    public $username = "";
+    private $username = "";
     private $profileCache = array();
 
     public function __construct()
@@ -14,22 +14,22 @@ class Instagram extends \ModularitySocialMedia\Controller
     }
 
     /**
-     * Format response to promise
+     * Format the response accoring to promised value
+     * @param stdObject $response The response value from the service formatted as std object
+     * @param string $type The type of feed provided (user/hashtag)
+     * @param string $origin The origin of the feteced posts (can be any but normally a hashtag name or account)
+     * @return array $feed formatted array with feed data
      */
 
-    public function formatResponse($response, $type = 'user', $origin = "")
+    private function formatResponse($response, $type = 'user', $origin = "")
     {
-
         $result = array();
 
         if (isset($response->posts) && !empty($response->posts)) {
-
             foreach ($response->posts as $item) {
-
                 $profile = null;
 
                 if ($type == "user") {
-
                     $profile = $this->getProfile($this->username);
 
                     $result[] = array(
@@ -52,11 +52,9 @@ class Instagram extends \ModularitySocialMedia\Controller
                         'link_content' => "",
                         'link_og_image' => "",
                     );
-
                 }
 
                 if ($type == "hashtag") {
-
                     $result[] = $i = array(
                         'id' => $item->id,
                         'user_name' => "#" . $origin,
@@ -76,19 +74,17 @@ class Instagram extends \ModularitySocialMedia\Controller
                         'link_content' => "",
                         'link_og_image' => "",
                     );
-
                 }
-
             }
-
         }
 
         return $result;
-
     }
 
     /**
      * Request the posts by hashtag
+     * @param string $hashtag The hashtag to fetch feed from
+     * @return array/bool The data fetched from the service api or false if none
      */
 
     public function getHashtag($hashtag = null)
@@ -115,11 +111,12 @@ class Instagram extends \ModularitySocialMedia\Controller
 
         //Error return
         return false;
-
     }
 
     /**
      * Request the posts by username
+     * @param string $username The username to fetch feed from
+     * @return array/bool The data fetched from the service api or false if none
      */
 
     public function getUser($username = null)
@@ -149,7 +146,9 @@ class Instagram extends \ModularitySocialMedia\Controller
     }
 
     /**
-     * Request the user profile information
+     * Request the user profile
+     * @param string $username The usernanme to fetch profile of
+     * @return array/bool The data fetched from the service api or false if none
      */
 
     public function getProfile($username)

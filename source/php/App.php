@@ -17,6 +17,11 @@ class App extends \Modularity\Module
         $this->description = __("Outputs a social media feed from desired usernames or hashtags (facebook, instagram, twitter, linkedin). The feed can combine multiple sources in a single feed.", 'modularity');
     }
 
+    /**
+     * Allocate view with data
+     * @return array $data Data sent to the view
+     */
+
     public function data() : array
     {
         $avabile_feeds = get_field('social_media_feeds', $this->ID);
@@ -50,18 +55,14 @@ class App extends \Modularity\Module
             }
         }
 
-
-
         //Remove duplicate posts
         $data['feed'] = $this->removeDuplicates($result);
 
-        //Only get n first items
-        $data['feed'] = array_slice($data['feed'], 0, get_field('mod_social_items', $this->ID));
-
         //Sort by publish date
-        usort($data['feed'], function ($a, $b) {
-            return (int) $b['timestamp'] - (int) $a['timestamp'];
-        });
+        $data['feed'] = $this->sortByTimestamp($data['feed']);
+
+        //Only get n first items
+        $data['feed'] = $this->truncateFeed($data['feed']);
 
         //Add translation strings
         $data['translations'] = array(
@@ -75,6 +76,39 @@ class App extends \Modularity\Module
 
         return $data;
     }
+
+    /**
+     * Truncate feed according to max items
+     * @param array $feed array items with the feed data
+     * @return array $feed truncated feed
+     */
+
+    public function truncateFeed($feed)
+    {
+        $limit = is_numeric(get_field('mod_social_items', $this->ID)) ? get_field('mod_social_items', $this->ID) : 10;
+        return array_slice($data['feed'], 0, $limit);
+    }
+
+    /**
+     * Sort data by timestamp
+     * @param array $feed array items with the feed data
+     * @return array $feed sanitized output array
+     */
+
+    public function sortByTimestamp($feed)
+    {
+        usort($feed, function ($a, $b) {
+            return (int) $b['timestamp'] - (int) $a['timestamp'];
+        });
+
+        return $feed;
+    }
+
+    /**
+     * Remove duplicate items by media type, compares id of the post.
+     * @param array $feed array items with the feed data
+     * @return array $feed sanitized output array
+     */
 
     public function removeDuplicates($feed)
     {

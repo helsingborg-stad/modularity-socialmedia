@@ -45,10 +45,13 @@ class Facebook extends \ModularitySocialMedia\Controller
     }
 
     /**
-     * Format response to promise
+     * Format the response accoring to promised value
+     * @param stdObject $response The response value from the service formatted as std object
+     * @param string $type The type of feed provided (user/hashtag)
+     * @return array $feed formatted array with feed data
      */
 
-    public function formatResponse($response, $type = 'user')
+    private function formatResponse($response, $type = 'user')
     {
 
         $result = array();
@@ -86,7 +89,9 @@ class Facebook extends \ModularitySocialMedia\Controller
     }
 
     /**
-     * Request the posts
+     * Request the posts by username
+     * @param string $username The username to fetch feed from
+     * @return array/bool The data fetched from the service api or false if none
      */
 
     public function getUser($username = null)
@@ -130,10 +135,11 @@ class Facebook extends \ModularitySocialMedia\Controller
     }
 
     /**
-     * Request a token from Facebook Graph API
+     * Request a access token based on provided details.
+     * @return string The access token.
      */
 
-    public function getAccessToken()
+    private function getAccessToken()
     {
 
         //Setup access data
