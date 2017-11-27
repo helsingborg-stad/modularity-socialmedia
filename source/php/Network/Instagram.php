@@ -43,7 +43,7 @@ class Instagram extends \ModularitySocialMedia\Controller
                         'image_large' => $item->thumbnail_resources[4]->src,
                         'image_small' => $item->thumbnail_resources[0]->src,
 
-                        'number_of_likes' => ($item->edge_liked_by->count ? $item->edge_liked_by->count : 0),
+                        'number_of_likes' => (isset($item->edge_liked_by) && isset($item->edge_liked_by->count) ? ($item->edge_liked_by->count ? $item->edge_liked_by->count : 0) : 0),
                         'network_source' => 'https://www.instagram.com/p/'.$item->shortcode.'/',
                         'network_name' => 'instagram',
 
