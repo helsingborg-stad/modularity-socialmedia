@@ -13,7 +13,7 @@ class Controller
 
     public function __construct()
     {
-        $this->curl = new \Modularity\Helper\Curl();
+        $this->curl = new \Modularity\Helper\Curl(true, 60);
     }
 
     /**
