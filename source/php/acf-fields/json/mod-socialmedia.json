@@ -201,7 +201,7 @@
             "key": "field_56e038fa40a78",
             "label": "Numer of columns",
             "name": "mod_social_columns",
-            "type": "number",
+            "type": "select",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -210,13 +210,21 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 3,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": ""
+            "choices": {
+                "1": "One column",
+                "2": "Two columns",
+                "3": "Three columns",
+                "4: Four columns": "4: Four columns"
+            },
+            "default_value": [
+                3
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
         },
         {
             "key": "field_59afbaef4019a",
