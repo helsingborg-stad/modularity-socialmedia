@@ -55,7 +55,7 @@ class Instagram extends \ModularitySocialMedia\Controller
                 }
 
                 if ($type == "hashtag") {
-                    $result[] = $i = array(
+                    $result[] = array(
                         'id' => $item->id,
                         'user_name' => "#" . $origin,
                         'timestamp' => $item->taken_at_timestamp,
