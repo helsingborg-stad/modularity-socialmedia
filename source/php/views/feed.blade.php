@@ -49,5 +49,9 @@
         <a href="{{ $linkTarget }}" class="btn btn-block btn-outline btn-primary btn-md">{{ $linkLabel }}</a>
     @endif
 
+@else
+    <div class="notice info">
+         <i class="pricon pricon-info-o"></i> {{ $translations['noposts'] }}
+    </div>
 @endif
 

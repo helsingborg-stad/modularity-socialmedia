@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modularity Social Media Feed\n"
-"POT-Creation-Date: 2017-11-27 15:10+0100\n"
-"PO-Revision-Date: 2017-11-27 15:10+0100\n"
+"POT-Creation-Date: 2017-11-29 16:41+0100\n"
+"PO-Revision-Date: 2017-11-29 16:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: source/php/App.php:15
+#: source/php/App.php:14
 msgid "Social Media"
 msgstr "Sociala medier"
 
-#: source/php/App.php:16
+#: source/php/App.php:15
 msgid "Sociala Media"
 msgstr "Sociala medier"
 
-#: source/php/App.php:17
+#: source/php/App.php:16
 msgid ""
 "Outputs a social media feed from desired usernames or hashtags (facebook, "
 "instagram, twitter, linkedin). The feed can combine multiple sources in a "
@@ -37,17 +37,23 @@ msgstr ""
 "Skriver ut ett flöde med de senaste från facebook och instagram. Funktionen "
 "kan kombinera olika typer av flöden. "
 
-#: source/php/App.php:69
+#: source/php/App.php:77
 msgid "likes"
 msgstr "likes"
 
-#: source/php/App.php:70
+#: source/php/App.php:78
 msgid "posted on"
 msgstr "postat på"
 
-#: source/php/App.php:71
+#: source/php/App.php:79
 msgid "ago"
 msgstr "sedan"
+
+#: source/php/App.php:80
+msgid "We could not retrive any social media posts at this time."
+msgstr ""
+"Vi kunde tyvärr inte hämta några inlägg just nu, var god och försök igen "
+"senare."
 
 #: source/php/acf-fields/php/mod-socialmedia.php:6
 msgid "Social feed"

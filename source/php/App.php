@@ -76,7 +76,8 @@ class App extends \Modularity\Module
         $data['translations'] = array(
             'likes' => __("likes", 'modularity-socialmedia'),
             'posted' => __("posted on", 'modularity-socialmedia'),
-            'ago' => __("ago", 'modularity-socialmedia')
+            'ago' => __("ago", 'modularity-socialmedia'),
+            'noposts' => __("We could not retrive any social media posts at this time."),
         );
 
         //Number of columns
