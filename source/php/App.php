@@ -77,7 +77,7 @@ class App extends \Modularity\Module
             'likes' => __("likes", 'modularity-socialmedia'),
             'posted' => __("posted on", 'modularity-socialmedia'),
             'ago' => __("ago", 'modularity-socialmedia'),
-            'noposts' => __("We could not retrive any social media posts at this time."),
+            'noposts' => __("We could not retrive any social media posts at this time.", 'modularity-socialmedia'),
         );
 
         //Number of columns
