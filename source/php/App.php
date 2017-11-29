@@ -30,11 +30,15 @@ class App extends \Modularity\Module
 
         if (!empty($avabile_feeds) && is_array($avabile_feeds)) {
             foreach ($avabile_feeds as $feed) {
+                $result = false;
+
                 switch ($feed['acf_fc_layout']) {
                     case 'facebook':
 
                             $facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
-                            $data['feed'] = $data['feed'] + $facebook->getUser($feed['mod_socialmedia_fb_username']);
+                            if($result = $facebook->getUser($feed['mod_socialmedia_fb_username'])) {
+                                $data['feed'] = $data['feed'] + $result;
+                            }
 
                         break;
 
@@ -42,12 +46,16 @@ class App extends \Modularity\Module
 
                         if ($feed['mod_socialmedia_in_type'] == "user") {
                             $instagram = new Network\Instagram();
-                            $data['feed'] = $data['feed'] + $instagram->getUser($feed['mod_socialmedia_in_username']);
+                            if ($result = $instagram->getUser($feed['mod_socialmedia_in_username'])) {
+                                $data['feed'] = $data['feed'] + $result;
+                            }
                         }
 
                         if ($feed['mod_socialmedia_in_type'] == "hashtag") {
                             $instagram = new Network\Instagram();
-                            $data['feed'] = $data['feed'] + $instagram->getHashtag($feed['mod_socialmedia_in_hashtag']);
+                            if ($result = $instagram->getHashtag($feed['mod_socialmedia_in_hashtag'])) {
+                                $data['feed'] = $data['feed'] + $result;
+                            }
                         }
 
                         break;
