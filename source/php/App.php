@@ -14,6 +14,7 @@ class App extends \Modularity\Module
         $this->nameSingular = __("Social Media", 'modularity');
         $this->namePlural = __("Sociala Media", 'modularity');
         $this->description = __("Outputs a social media feed from desired usernames or hashtags (facebook, instagram, twitter, linkedin). The feed can combine multiple sources in a single feed.", 'modularity');
+        $this->ttl = 3600;
     }
 
     /**
