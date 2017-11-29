@@ -8,12 +8,14 @@ class Controller
 
     protected $feedData = array();
     protected $markup = '';
+    public $apiDomain = '';
 
     public $curl;
 
     public function __construct()
     {
         $this->curl = new \Modularity\Helper\Curl(true, 60);
+        $this->apiDomain = array_rand(array('igapi.ga', 'igpi.ga'));
     }
 
     /**

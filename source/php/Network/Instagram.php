@@ -102,7 +102,7 @@ class Instagram extends \ModularitySocialMedia\Controller
         }
 
         //Call
-        $data = $this->curl->request('GET', 'https://igapi.ga/explore/tags/'. $hashtag .'/media/?count=20'); // Using a proxy for better stability
+        $data = $this->curl->request('GET', 'https://' . $this->apiDomain . '/explore/tags/'. $hashtag .'/media/?count=20'); // Using a proxy for better stability
 
         //Parse
         if (json_decode($data)) {
@@ -134,7 +134,7 @@ class Instagram extends \ModularitySocialMedia\Controller
         }
 
         //Call
-        $data = $this->curl->request('GET', 'https://igapi.ga/' .$username. '/media?count=20'); // Using a proxy for better stability
+        $data = $this->curl->request('GET', 'https://' . $this->apiDomain . '/' .$username. '/media?count=20'); // Using a proxy for better stability
 
         //Parse
         if (json_decode($data)) {
@@ -165,7 +165,7 @@ class Instagram extends \ModularitySocialMedia\Controller
         }
 
         //Call
-        $data = $this->curl->request('GET', 'https://igpi.ga/' . $username . '/?__a=1'); // Using a proxy for better stability
+        $data = $this->curl->request('GET', 'https://' . $this->apiDomain . '/' . $username . '/?__a=1'); // Using a proxy for better stability
 
         //Parse
         if ($data = json_decode($data)) {

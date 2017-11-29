@@ -9,7 +9,6 @@ class App extends \Modularity\Module
 
     public $feedArgs;
 
-
     public function init()
     {
         $this->nameSingular = __("Social Media", 'modularity');
