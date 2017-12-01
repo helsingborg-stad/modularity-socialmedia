@@ -7,7 +7,7 @@
                 <div class="material">
                     @if(!is_null($item['image_large']))
                     <div class="social-image">
-                        <a href="{{ $item['network_source'] }}" class="ratio-16-9" style="display: block; background-size: cover; background-image: url('{{ $item['image_large'] }}'); background-position: top center;"></a>
+                        <a href="{{ $item['network_source'] }}" class="ratio-16-9" style="background-image: url('{{ $item['image_large'] }}');"></a>
                     </div>
                     @endif
                     <div class="social-user">

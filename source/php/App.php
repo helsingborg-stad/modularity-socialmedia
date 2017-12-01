@@ -112,10 +112,11 @@ class App extends \Modularity\Module
         }
 
         //Calculate number of colums
-        if (is_numeric($numberOfColumns)) {
-            return "grid-xs-12 grid-sm-" . (12 / $numberOfColumns);
+        if (is_numeric($numberOfColumns) && $numberOfColumns != 1) {
+            return "grid-xs-12 grid-sm-6 grid-md-6 grid-lg-" . (12 / $numberOfColumns);
         }
-        return 'grid-xs-12 grid-sm-4';
+
+        return 'grid-xs-12 grid-sm-6 grid-md-6 grid-lg-4';
     }
 
     /**
