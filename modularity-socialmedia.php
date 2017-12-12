@@ -9,7 +9,7 @@
  * Author URI:        https://github.com/helsingborg-stad
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
- * Text Domain:       modularity-tiles
+ * Text Domain:       modularity-socialmedia
  * Domain Path:       /languages
  */
 
