@@ -12,7 +12,7 @@ class Instagram extends \ModularitySocialMedia\Controller
     public function __construct()
     {
         parent::__construct();
-        $this->apiDomain = 'hbg-instagram-proxy.herokuapp.com';
+        $this->apiDomain = date('W')%2==0 ? 'hbg-instagram-proxy-second.herokuapp.com' : 'hbg-instagram-proxy.herokuapp.com';
     }
 
     /**
