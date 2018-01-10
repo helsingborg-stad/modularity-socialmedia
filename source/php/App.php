@@ -26,6 +26,7 @@ class App extends \Modularity\Module
     {
         $avabile_feeds = get_field('social_media_feeds', $this->ID);
 
+        $data['moduleId'] = $this->ID;
         $data['feed'] = array();
 
         if (!empty($avabile_feeds) && is_array($avabile_feeds)) {
@@ -69,6 +70,12 @@ class App extends \Modularity\Module
         //Sort by publish date
         $data['feed'] = $this->sortByTimestamp($data['feed']);
 
+        //Append visibility class
+        $data['feed'] = $this->appendVisibility($data['feed'], get_post_meta($this->ID, 'mod_socialmedia_hidden_inlays', true));
+
+        //Remove hidden inlays
+        $data['feed'] = $this->removeHidden($data['feed'], get_post_meta($this->ID, 'mod_socialmedia_hidden_inlays', true));
+
         //Only get n first items
         $data['feed'] = $this->truncateFeed($data['feed']);
 
@@ -93,6 +100,13 @@ class App extends \Modularity\Module
 
         //Generate a section id
         $data['sectionID'] = sanitize_title($this->post_title);
+
+        //Can edit?
+        if (is_user_logged_in() && current_user_can('edit_posts')) {
+            $data['showVisibilityButton'] = true;
+        } else {
+            $data['showVisibilityButton'] = false;
+        }
 
         return $data;
     }
@@ -163,6 +177,69 @@ class App extends \Modularity\Module
                 }
             }
 
+            return $sanitized;
+        }
+
+        return $feed;
+    }
+
+    /**
+     * Append visibility class
+     * @param array $feed array items with the feed data
+     * @param array $hidden array with hidden id's
+     * @param string $key name of compare item
+     * @return array $feed sanitized output array
+     */
+
+    public function appendVisibility($feed, $hidden, $key = 'id')
+    {
+
+        if (!is_array($hidden)) {
+            $hidden = array();
+        }
+
+        if (is_array($feed) && !empty($feed)) {
+            foreach ($feed as &$item) {
+                if (in_array($item[$key], $hidden)) {
+                    $item['visibilityClass'] = "is-hidden";
+                } else {
+                    $item['visibilityClass'] = "";
+                }
+            }
+        }
+
+        return $feed;
+    }
+    /**
+     * Append visibility class
+     * @param array $feed array items with the feed data
+     * @param array $hidden array with hidden id's
+     * @param string $key name of compare item
+     * @return array $feed sanitized output array
+     */
+
+    public function removeHidden($feed, $hidden, $key = 'id')
+    {
+
+        //Bypass if is admin
+        if (is_user_logged_in() && current_user_can('edit_posts')) {
+            return $feed;
+        }
+
+        //Reset
+        if (!is_array($hidden)) {
+            $hidden = array();
+        }
+
+        $sanitized= array();
+
+        if (is_array($feed) && !empty($feed)) {
+            foreach ($feed as $item) {
+                if (in_array($item[$key], $hidden)) {
+                    continue;
+                }
+                $sanitized[$item[$key]] = $item;
+            }
             return $sanitized;
         }
 

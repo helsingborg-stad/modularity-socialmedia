@@ -1,10 +1,31 @@
 @if(is_array($feed) && !empty($feed))
     <ul id="{{ $sectionID }}" class="social social-feed-v2" data-packery='{ "itemSelector": ".social-item", "percentPosition": true, "transitionDuration": 0 }'>
 
+        <!-- Functional css -->
+        <style scoped>
+
+            .pricon-eye-hide {
+                display: none;
+            }
+
+            .is-hidden .pricon-eye {
+                display: none;
+            }
+
+            .is-hidden .pricon-eye-hide {
+                display: inline-block;
+            }
+        </style>
+
         @foreach($feed as $item)
 
             <li class="social-item {{$columns}}">
                 <div class="material">
+
+                    @if($showVisibilityButton)
+                        <button class="js-mod-socialmedia-toggle-visibility {{ $item['visibilityClass'] }}" data-module-id="{{ $moduleId }}" data-inlay-id="{{ $item['id'] }}"><i class="pricon pricon-eye"></i><i class="pricon pricon-eye-hide"></i></button>
+                    @endif
+
                     @if(!is_null($item['image_large']))
                     <div class="social-image">
                         <a href="{{ $item['network_source'] }}" class="ratio-16-9" style="background-image: url('{{ $item['image_large'] }}');"></a>
