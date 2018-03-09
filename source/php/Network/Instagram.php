@@ -40,7 +40,7 @@ class Instagram extends \ModularitySocialMedia\Controller
                         'profile_pic' => $profile['profilepic'],
                         'timestamp' => $item->taken_at_timestamp,
                         'timestamp_readable' => $this->readableTimeStamp($item->taken_at_timestamp),
-                        'content' => wp_trim_words($item->edge_media_to_caption->edges[0]->node->text, 40, "..."),
+                        'content' => wp_trim_words(str_replace("#", " #", $item->edge_media_to_caption->edges[0]->node->text), 40, "..."),
 
                         'image_large' => $item->thumbnail_resources[4]->src,
                         'image_small' => $item->thumbnail_resources[0]->src,
@@ -62,7 +62,7 @@ class Instagram extends \ModularitySocialMedia\Controller
                         'user_name' => "#" . $origin,
                         'timestamp' => $item->taken_at_timestamp,
                         'timestamp_readable' => $this->readableTimeStamp($item->taken_at_timestamp),
-                        'content' => wp_trim_words($item->edge_media_to_caption->edges[0]->node->text, 40, "..."),
+                        'content' => wp_trim_words(str_replace("#", " #", $item->edge_media_to_caption->edges[0]->node->text), 40, "..."),
 
                         'image_large' => $item->thumbnail_resources[4]->src,
                         'image_small' => $item->thumbnail_resources[0]->src,
