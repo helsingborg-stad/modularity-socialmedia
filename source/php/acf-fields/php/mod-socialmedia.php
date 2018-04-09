@@ -93,45 +93,13 @@
                     'display' => 'block',
                     'sub_fields' => array(
                         0 => array(
-                            'key' => 'field_5a16db4cf91c3',
-                            'label' => 'Type of Feed',
-                            'name' => 'mod_socialmedia_in_type',
-                            'type' => 'radio',
-                            'instructions' => '',
-                            'required' => 1,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '100',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'choices' => array(
-                                'user' => 'User',
-                                'hashtag' => 'Hashtag',
-                            ),
-                            'allow_null' => 0,
-                            'other_choice' => 0,
-                            'save_other_choice' => 0,
-                            'default_value' => 'user',
-                            'layout' => 'horizontal',
-                            'return_format' => 'value',
-                        ),
-                        1 => array(
                             'key' => 'field_5a16db95f91c4',
                             'label' => 'Instagram Username',
                             'name' => 'mod_socialmedia_in_username',
                             'type' => 'text',
                             'instructions' => '',
                             'required' => 1,
-                            'conditional_logic' => array(
-                                0 => array(
-                                    0 => array(
-                                        'field' => 'field_5a16db4cf91c3',
-                                        'operator' => '==',
-                                        'value' => 'user',
-                                    ),
-                                ),
-                            ),
+                            'conditional_logic' => 0,
                             'wrapper' => array(
                                 'width' => '',
                                 'class' => '',
@@ -140,33 +108,6 @@
                             'default_value' => '',
                             'placeholder' => '',
                             'prepend' => '@',
-                            'append' => '',
-                            'maxlength' => '',
-                        ),
-                        2 => array(
-                            'key' => 'field_5a16dba4f91c5',
-                            'label' => 'Instagram Hashtag',
-                            'name' => 'mod_socialmedia_in_hashtag',
-                            'type' => 'text',
-                            'instructions' => '',
-                            'required' => 1,
-                            'conditional_logic' => array(
-                                0 => array(
-                                    0 => array(
-                                        'field' => 'field_5a16db4cf91c3',
-                                        'operator' => '==',
-                                        'value' => 'hashtag',
-                                    ),
-                                ),
-                            ),
-                            'wrapper' => array(
-                                'width' => '',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'default_value' => '',
-                            'placeholder' => '',
-                            'prepend' => '#',
                             'append' => '',
                             'maxlength' => '',
                         ),

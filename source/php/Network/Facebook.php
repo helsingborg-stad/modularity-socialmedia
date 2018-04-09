@@ -4,7 +4,6 @@ namespace ModularitySocialMedia\Network;
 
 class Facebook extends \ModularitySocialMedia\Controller
 {
-
     private $appId;
     private $appSecret;
     private $username;
@@ -53,7 +52,6 @@ class Facebook extends \ModularitySocialMedia\Controller
 
     private function formatResponse($response, $type = 'user')
     {
-
         $result = array();
 
         if (!empty($response) && is_array($response)) {
@@ -65,7 +63,7 @@ class Facebook extends \ModularitySocialMedia\Controller
                 }
 
                 $result[] = array(
-                    'id' => $item->object_id,
+                    'id' => $item->object_id . "-facebook",
                     'user_name' => isset($item->from->name) ? $item->from->name : '',
                     'profile_pic' => null,
                     'timestamp' => strtotime($item->created_time),

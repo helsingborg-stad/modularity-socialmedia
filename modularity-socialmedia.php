@@ -18,14 +18,17 @@ if (! defined('WPINC')) {
     die;
 }
 
+//Define paths
 define('MODULARITYSOCIALMEDIA_PATH', plugin_dir_path(__FILE__));
 define('MODULARITYSOCIALMEDIA_URL', plugins_url('', __FILE__));
 define('MODULARITYSOCIALMEDIA_TEMPLATE_PATH', MODULARITYSOCIALMEDIA_PATH . 'templates/');
 define('MODULARITYSOCIALMEDIA_MODULE_PATH', MODULARITYSOCIALMEDIA_PATH . 'source/php/');
 
-
+//Translations
 load_plugin_textdomain('modularity-socialmedia', false, plugin_basename(dirname(__FILE__)) . '/languages');
 
+//Require vendor data
+require_once MODULARITYSOCIALMEDIA_PATH . 'vendor/autoload.php';
 require_once MODULARITYSOCIALMEDIA_PATH . 'source/php/Vendor/Psr4ClassLoader.php';
 require_once MODULARITYSOCIALMEDIA_PATH . 'Public.php';
 

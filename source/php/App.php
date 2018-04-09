@@ -36,27 +36,18 @@ class App extends \Modularity\Module
                 switch ($feed['acf_fc_layout']) {
                     case 'facebook':
 
-                            $facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
-                            if($result = $facebook->getUser($feed['mod_socialmedia_fb_username'])) {
-                                $data['feed'] = $data['feed'] + $result;
-                            }
+                        $facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
+                        if($result = $facebook->getUser($feed['mod_socialmedia_fb_username'])) {
+                            $data['feed'] = $data['feed'] + $result;
+                        }
 
                         break;
 
                     case 'instagram':
 
-                        if ($feed['mod_socialmedia_in_type'] == "user") {
-                            $instagram = new Network\Instagram();
-                            if ($result = $instagram->getUser($feed['mod_socialmedia_in_username'])) {
-                                $data['feed'] = $data['feed'] + $result;
-                            }
-                        }
-
-                        if ($feed['mod_socialmedia_in_type'] == "hashtag") {
-                            $instagram = new Network\Instagram();
-                            if ($result = $instagram->getHashtag($feed['mod_socialmedia_in_hashtag'])) {
-                                $data['feed'] = $data['feed'] + $result;
-                            }
+                        $instagram = new Network\Instagram();
+                        if ($result = $instagram->getUser($feed['mod_socialmedia_in_username'])) {
+                            $data['feed'] = $data['feed'] + $result;
                         }
 
                         break;
