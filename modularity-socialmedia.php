@@ -28,7 +28,6 @@ define('MODULARITYSOCIALMEDIA_MODULE_PATH', MODULARITYSOCIALMEDIA_PATH . 'source
 load_plugin_textdomain('modularity-socialmedia', false, plugin_basename(dirname(__FILE__)) . '/languages');
 
 //Require vendor data
-require_once MODULARITYSOCIALMEDIA_PATH . 'vendor/autoload.php';
 require_once MODULARITYSOCIALMEDIA_PATH . 'source/php/Vendor/Psr4ClassLoader.php';
 require_once MODULARITYSOCIALMEDIA_PATH . 'Public.php';
 
