@@ -31,14 +31,12 @@ class App extends \Modularity\Module
 
         if (!empty($avabile_feeds) && is_array($avabile_feeds)) {
             foreach ($avabile_feeds as $feed) {
-                $result = false;
-
                 switch ($feed['acf_fc_layout']) {
                     case 'facebook':
 
                         $facebook = new Network\Facebook($feed['mod_socialmedia_fb_app_id'], $feed['mod_socialmedia_fb_app_secret']);
                         if($result = $facebook->getUser($feed['mod_socialmedia_fb_username'])) {
-                            $data['feed'] = $data['feed'] + $result;
+                            $data['feed'] = array_merge($data['feed'], $result);
                         }
 
                         break;
@@ -47,11 +45,12 @@ class App extends \Modularity\Module
 
                         $instagram = new Network\Instagram();
                         if ($result = $instagram->getUser($feed['mod_socialmedia_in_username'])) {
-                            $data['feed'] = $data['feed'] + $result;
+                            $data['feed'] = array_merge($data['feed'], $result);
                         }
 
                         break;
                 }
+
             }
         }
 

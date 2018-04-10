@@ -22,8 +22,10 @@ class Instagram extends \ModularitySocialMedia\Controller
 
     public function getUser($username)
     {
+        //Create curl
         if (is_null($this->cache)) {
-            $this->cache = $this->parseMarkup(file_get_contents($this->baseUrl . $username));
+            $this->curl->setOption(CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+            $this->cache = $this->parseMarkup($this->curl->request('GET', $this->baseUrl . $username));
         }
 
         $response = array();
