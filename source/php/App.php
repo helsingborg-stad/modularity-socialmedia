@@ -7,6 +7,8 @@ class App extends \Modularity\Module
     public $slug = 'socialmedia';
     public $supports = array();
 
+    public $isDeprecated = true;
+
     public $feedArgs;
 
     public function init()
